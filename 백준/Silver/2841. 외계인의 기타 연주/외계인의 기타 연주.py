@@ -2,7 +2,7 @@ import sys
 
 n, p = map(int, sys.stdin.readline().split())
 
-lst = [[0] for _ in range(n+1)]
+lst = [[0] for _ in range(7)]
 cnt = 0
 for _ in range(n):
     sound, fret = map(int, sys.stdin.readline().split())
