@@ -1,42 +1,49 @@
-import collections
+from collections import deque
 import sys
 input = sys.stdin.readline
 
-n, m = map(int, input().split())
+r, c = map(int, input().split())
 
-graph = [list(input().strip()) for _ in range(n)]
-distance = [[0] *m for _ in range(n)]
-dx, dy = [-1, 1, 0, 0], [0, 0, -1, 1]
-queue = collections.deque()
+graph = [list(input().strip()) for _ in range(r)]
+visited = [[0 for _ in range(c)] for _ in range(r)]
+di = [0, 0, -1, 1]
+dj = [1, -1, 0, 0]
 
-def bfs(Dx, Dy):
-    while queue:
-        x, y = queue.popleft()
-        if graph[Dx][Dy] == 'S':
-            return distance[Dx][Dy]
-        for i in range(4):
-            nx = x + dx[i]
-            ny = y + dy[i]
-            if 0 <= nx < n and 0 <= ny < m:
-                if (graph[nx][ny] == '.' or graph[nx][ny] == 'D') and graph[x][y] == 'S':
-                    graph[nx][ny] = 'S'
-                    distance[nx][ny] = distance[x][y] + 1
-                    queue.append((nx,ny))
-                elif (graph[nx][ny] =='.' or graph[nx][ny] =='S') and graph[x][y] == '*':
-                    graph[nx][ny] = '*'
-                    queue.append((nx,ny))
+q = deque()
+
+def bfs():
+    while q:
+        i, j = q.popleft()
+        # for a in graph:
+        #     print(a)
+        # print('------graph-------')
+        # for b in visited:
+        #     print(b)
+        # print('------visited------')
+        for k in range(4):
+            ni = i + di[k]
+            nj = j + dj[k]
+            if 0 <= ni < r and 0 <= nj < c:
+                if graph[ni][nj] == 'D' and graph[i][j] == 'S':
+                    return visited[i][j] + 1
+                elif graph[ni][nj] == '.' and graph[i][j] == 'S':
+                    graph[ni][nj] = 'S'
+                    visited[ni][nj] = visited[i][j] + 1
+                    q.append([ni, nj])
+                elif (graph[ni][nj] == '.' or graph[ni][nj] == 'S') and graph[i][j] == '*':
+                    graph[ni][nj] = '*'
+                    q.append([ni, nj])
+
     return "KAKTUS"
 
-for x in range(n):
-    for y in range(m):
-        if graph[x][y] == 'S':
-            queue.append((x, y))
-        elif graph[x][y] == 'D':
-            Dx, Dy = x, y
+for i in range(r):
+    for j in range(c):
+        if graph[i][j] == 'S':
+            q.append([i, j])
 
-for x in range(n):
-    for y in range(m):
-        if graph[x][y] == '*':
-            queue.append((x, y))
+for i in range(r):
+    for j in range(c):
+        if graph[i][j] == '*':
+            q.append([i, j])
 
-print(bfs(Dx, Dy))
+print(bfs())
