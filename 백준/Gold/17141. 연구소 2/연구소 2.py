@@ -35,11 +35,10 @@ def virus_check():
                 time = visited[i][j]
     ans_list.append(time)
     return
-# 입력
+
 n, m = map(int, input().split())
 matrix = [list(map(int, input().split())) for _ in range(n)]
 
-# 바이러스 가능한 포지션을 리스트화
 virus_positive_position = []
 for i in range(n):
     for j in range(n):
@@ -47,13 +46,11 @@ for i in range(n):
             virus_positive_position.append([i, j])
             matrix[i][j] = 0
 
-# 바이러스 가능한 포지션 리스트를 m개 뽑은 리스트 lst [[],[],[]]
 ans_list = []
 for lst in combinations(virus_positive_position, m):
     visited= [[0 for _ in range(n)] for _ in range(n)]
     BFS(lst)
     virus_check()
-
 
 if sum(ans_list) == -len(ans_list):
     print(-1)
