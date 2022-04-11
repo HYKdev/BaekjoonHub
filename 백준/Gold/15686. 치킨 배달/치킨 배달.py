@@ -24,7 +24,8 @@ for k in range(1, m+1):
                 if abs(hi-ci) + abs(hj-cj) < min_length:
                     min_length = abs(hi-ci) + abs(hj-cj)
             total += min_length
-
+            if answer < total:
+                break
         if answer > total:
             answer = total
 print(answer)
