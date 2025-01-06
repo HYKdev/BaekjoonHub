@@ -1,5 +1,8 @@
-n = int(input())
+num = int(input())
 
-total = (1+n) * n / 2
+total = 0
 
-print(int(total))
+for i in range(1, num+1):
+    total += i
+
+print(total)
