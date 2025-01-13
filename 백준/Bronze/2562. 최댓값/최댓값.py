@@ -1,10 +1,11 @@
-max_idx = 0
-max_number = 0
-for i in range(1, 10):
-    number = int(input())
-    if max_number < number:
-        max_number = number
-        max_idx = i
+max_num = 0
+max_check = 0
+for i in range(1,10):
+    num = int(input())
 
-print(max_number)
-print(max_idx)
+    if max_num < num:
+        max_num = num
+        max_check = i
+
+print(max_num)
+print(max_check)
