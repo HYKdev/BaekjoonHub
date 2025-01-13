@@ -1,14 +1,14 @@
-n = int(input())
+N = int(input())
+num_list = list(map(int, input().split()))
 
-arr = list(map(int, input().split()))
+min_num = 1000000
+max_num = -1000000
 
-max_num = arr[0]
-min_num = arr[0]
-for i in range(n):
-    if arr[i] > max_num:
-        max_num = arr[i]
+for num in num_list:
+    if num < min_num:
+        min_num = num
     
-    if arr[i] < min_num:
-        min_num = arr[i]
+    if num > max_num:
+        max_num = num
 
 print(min_num, max_num)
