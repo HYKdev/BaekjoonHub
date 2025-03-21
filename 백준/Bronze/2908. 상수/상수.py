@@ -1,19 +1,6 @@
-a, b = map(list, input().split())
+x, y = map(str, input().split())
 
-flag = 0
-for i in range(1, 4):
-    if a[-i] > b[-i]:
-        flag = 0
-        break
-    elif a[-i] < b[-i]:
-        flag = 1
-        break
+x = int(x[-1]+x[1]+x[0])
+y = int(y[-1]+y[1]+y[0])
 
-if flag:
-    result = b
-else:
-    result = a
-
-for i in range(1, 4):
-    print(result[-i], end='')
-print()
+print(max(x,y))
