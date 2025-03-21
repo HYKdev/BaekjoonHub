@@ -1,15 +1,20 @@
-import sys
-input = sys.stdin.readline
+s = input().upper()
 
-words = input()
-word_count = [0 for _ in range(26)]
-for word in words:
-    if 123 > ord(word) > 96:
-        word_count[ord(word)-97] += 1
-    elif 64 < ord(word) < 91:
-        word_count[ord(word)-65] += 1
+arr = [0] * 26
 
-if word_count.count(max(word_count)) > 1:
+for item in s:
+    arr[ord(item)-ord('A')] += 1
+
+max_check = max(arr)
+
+cnt = 0
+j = 0
+for i in range(len(arr)):
+    if arr[i] == max_check:
+        cnt += 1
+        j = i
+
+if cnt == 1:
+    print(chr(65+j))
+else:
     print('?')
-elif word_count.count(max(word_count)) == 1:
-    print(chr(word_count.index(max(word_count))+65))
