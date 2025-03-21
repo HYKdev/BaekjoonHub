@@ -1,13 +1,8 @@
-S = list(input())
+S = input()
 
-arr = [-1 for _ in range(26)]
-
-#97~122 a~z
-i = 0
-for s in S:
-    num = ord(s)-97
-    if arr[num] == -1:
-        arr[num] = i
-    i += 1
+arr = [-1] * 26
+for i in range(len(S)):
+    if arr[ord(S[i])-97] == -1:
+        arr[ord(S[i])-97] = i
 
 print(*arr)
