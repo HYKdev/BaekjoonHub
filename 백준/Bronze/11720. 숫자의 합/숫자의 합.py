@@ -1,8 +1,9 @@
 n = int(input())
-number = list(map(int, input()))
 
-total = 0
+number = input()
+
+cnt = 0
 for num in number:
-    total += num
+    cnt += int(num)
 
-print(total)
+print(cnt)
