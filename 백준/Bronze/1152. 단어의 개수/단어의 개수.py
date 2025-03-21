@@ -1,7 +1,3 @@
-import sys
+arr = list(map(str, input().split()))
 
-input = sys.stdin.readline
-
-text = input().split()
-
-print(len(text))
+print(len(arr))
