@@ -19,9 +19,7 @@ if start_num > 0:
         if rank_list[start_num][1:] == rank_list[start_num-i][1:]:
             cnt -= 1
         else:
-            print(cnt)
             break
     print(cnt)
 else:
     print(1)
-
